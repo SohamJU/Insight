@@ -26,7 +26,9 @@ h4
 reasons=read_excel('asa1.xlsx')
 library(dplyr)
 reasons=reasons[-2]
-reasons$Percentage=round(reasons$Percentage,2)da
-g1=ggplot(reasons, aes(x = reasons$`Reason for DepC`))
-g2=g1+geom_bar(aes(fill=(reasons$Percentage))) +co
-g2 
+reasons$Percentage=round(reasons$Percentage,2)
+p <- plot_ly(reasons, labels = ~`Reason for DepC`, values = ~Percentage, type='pie') %>%
+  layout(title = 'Reasons behind Branch Change',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+p
